@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-verify";
 import { load } from 'ts-dotenv';
 
 const env = load({
@@ -28,8 +29,21 @@ const config: HardhatUserConfig = {
   },
 
   etherscan: {
-    apiKey: env.ETHERSCAN_API_KEY,
-  },
-};
+    apiKey: {
+      sepolia: env.ETHERSCAN_API_KEY,
+      spicy: env.ETHERSCAN_API_KEY
+    },
+    customChains: [
+      {
+        network: "spicy",
+        chainId: 88882,
+        urls: {
+          apiURL: "",
+          browserURL: "http://spicy-explorer.chiliz.com/"
+        }
+      }
+    ]
+  }
+}
 
 export default config;
