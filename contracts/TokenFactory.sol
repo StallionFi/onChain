@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/proxy/Clones.sol";
 
 contract TokenFactory {
     address immutable tokenImplementation;
-
+    address[] public tokens;
     constructor() {
         tokenImplementation = address(new HorseToken());
     }
@@ -21,6 +21,7 @@ contract TokenFactory {
     function createToken(string calldata name, string calldata symbol, uint256 _price) external returns (address) {
         address clone = Clones.clone(tokenImplementation);
         HorseToken(clone).initialize(name, symbol, msg.sender, _price);
+        tokens.push(clone);
         return clone;
     }
 }
