@@ -9,9 +9,18 @@ import fs from 'fs'
 
 // The 'path' module provides helpers for manipulating filesystem paths
 import path from 'path'
+import { load } from 'ts-dotenv';
+
+const env = load({
+  INFURA_API_KEY: String,
+  INFURA_SECRET_KEY: String,
+  WALLET_PRIVATE_KEY: String,
+  ETHERSCAN_API_KEY: String,
+  NFT_STORAGE_API_KEY: String
+});
 
 // Paste your NFT.Storage API key into the quotes:
-const NFT_STORAGE_KEY = 'REPLACE_ME_WITH_YOUR_KEY'
+const NFT_STORAGE_KEY = env.NFT_STORAGE_API_KEY
 
 /**
   * Reads an image file from `imagePath` and stores an NFT with the given name and description.
@@ -56,13 +65,10 @@ async function fileFromPath(filePath: string) {
  * positional arguments for imagePath, name, and description
  */
 async function main() {
-    const args = process.argv.slice(2)
-    if (args.length !== 3) {
-        console.error(`usage: ${process.argv[0]} ${process.argv[1]} <image-path> <name> <description>`)
-        process.exit(1)
-    }
+    const imagePath = "/Users/vlad/DEV/Hackathons/Horses/horse.jpeg";
+    const name = "Fadillah";
+    const description = "trainer: 'William Haggas', jockey: 'Andrea Atzeni' "
 
-    const [imagePath, name, description] = args
     const result = await storeHorse(imagePath, name, description)
     console.log(result)
 }
