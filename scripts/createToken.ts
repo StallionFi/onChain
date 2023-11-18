@@ -1,6 +1,6 @@
 import { ethers } from "hardhat";
 import { load } from 'ts-dotenv';
-import { factoryAbi } from "../Abi";
+import { factoryAbi } from "../AbiBasic";
 import { Interface, InterfaceAbi } from "ethers";
 
 const env = load({
