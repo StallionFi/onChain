@@ -5,7 +5,7 @@ pragma solidity ^0.8.20;
 import "./TokenWithData.sol";
 import "@openzeppelin/contracts/proxy/Clones.sol";
 
-contract TokenFactory {
+contract TokenFactoryWithData {
     address immutable tokenImplementation;
     address[] public tokens;
     constructor() {
