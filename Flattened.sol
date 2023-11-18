@@ -7,7 +7,7 @@
 // Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.0.0) (proxy/utils/Initializable.sol)
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 /**
  * @dev This is a base contract to aid in writing upgradeable contracts, or any kind of contract that will be deployed
@@ -239,7 +239,7 @@ abstract contract Initializable {
 // Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.0.0) (utils/Context.sol)
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 /**
  * @dev Provides information about the current execution context, including the
@@ -271,7 +271,7 @@ abstract contract ContextUpgradeable is Initializable {
 
 // Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.0.0) (interfaces/draft-IERC6093.sol)
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 /**
  * @dev Standard ERC20 Errors
@@ -437,7 +437,7 @@ interface IERC1155Errors {
 // Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -520,7 +520,7 @@ interface IERC20 {
 // Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/extensions/IERC20Metadata.sol)
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 /**
  * @dev Interface for the optional metadata functions from the ERC20 standard.
@@ -548,7 +548,7 @@ interface IERC20Metadata is IERC20 {
 // Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/ERC20.sol)
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 
 
@@ -890,7 +890,7 @@ abstract contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20,
 
 // Original license: SPDX_License_Identifier: MIT
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 contract HorseToken is ERC20Upgradeable {
     address owner;
@@ -933,7 +933,7 @@ contract HorseToken is ERC20Upgradeable {
 // Original license: SPDX_License_Identifier: MIT
 // OpenZeppelin Contracts (last updated v5.0.0) (proxy/Clones.sol)
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 /**
  * @dev https://eips.ethereum.org/EIPS/eip-1167[EIP 1167] is a standard for
@@ -1031,7 +1031,7 @@ library Clones {
 
 // Original license: SPDX_License_Identifier: MIT
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 
 contract TokenFactory {
@@ -1040,7 +1040,13 @@ contract TokenFactory {
     constructor() {
         tokenImplementation = address(new HorseToken());
     }
-
+    
+    /**
+     * 
+     * @param name name of the horse 
+     * @param symbol first 3 letters of name 
+     * @param _price horse price in eth
+     */
     function createToken(string calldata name, string calldata symbol, uint256 _price) external returns (address) {
         address clone = Clones.clone(tokenImplementation);
         HorseToken(clone).initialize(name, symbol, msg.sender, _price);

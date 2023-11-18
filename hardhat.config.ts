@@ -11,7 +11,7 @@ const env = load({
 });
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.20",
+  solidity: "0.8.18",
 
   networks: {
     sepolia: {
