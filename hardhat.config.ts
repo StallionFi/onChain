@@ -25,6 +25,10 @@ const config: HardhatUserConfig = {
     spicy: {
       url: `https://spicy-rpc.chiliz.com/`,
       accounts: [env.WALLET_PRIVATE_KEY]
+    },
+    chiliz: {
+      url: "https://chiliz.publicnode.com/",
+      accounts: [env.WALLET_PRIVATE_KEY]
     }
   },
 
