@@ -10,7 +10,7 @@ const env = load({
   ETHERSCAN_API_KEY: String
 });
 
-const FatcoryContract = "0xAa087a1e4D2089558EB7d82CE6FF7A9a21f84fF";
+const FatcoryContract = "0xAa087a1e4D2089558EB7d82CE6FF7A9a21f84fFe";
 
 async function main() {
   
@@ -26,7 +26,6 @@ async function main() {
 
     const token = await factory.createToken("hi", "h", 100);
 
-    console.log(token);
 }
 
 main().catch((error) => {
