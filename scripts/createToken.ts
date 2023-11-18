@@ -13,9 +13,8 @@ const env = load({
 const FatcoryContract = "0xAa087a1e4D2089558EB7d82CE6FF7A9a21f84fFe";
 
 async function main() {
-  
    
-    const provider = ethers.getDefaultProvider(`https://spicy-rpc.chiliz.com/`);
+    const provider = ethers.getDefaultProvider(`https://rpc.ankr.com/chiliz`);
     const signer = new ethers.Wallet(env.WALLET_PRIVATE_KEY, provider);
 
     async function getContract(contractAddress: string, abi: Interface | InterfaceAbi){
@@ -24,8 +23,8 @@ async function main() {
 
     const factory = await getContract(FatcoryContract, factoryAbi);
 
-    const token = await factory.createToken("hi", "h", 100);
-
+    const token = await factory.createToken("hi", "h", 100, { gasLimit: 1000000 });
+    console.log(token)
 }
 
 main().catch((error) => {
