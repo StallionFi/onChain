@@ -8,6 +8,7 @@ import "@openzeppelin/contracts/proxy/Clones.sol";
 contract TokenFactory {
     address immutable tokenImplementation;
     address[] public tokens;
+    
     constructor() {
         tokenImplementation = address(new HorseToken());
     }
