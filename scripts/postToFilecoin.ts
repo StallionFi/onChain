@@ -65,8 +65,8 @@ async function fileFromPath(filePath: string) {
  * positional arguments for imagePath, name, and description
  */
 async function main() {
-    const imagePath = "/Users/vlad/DEV/Hackathons/Horses/horse.jpeg";
-    const name = "Fadillah";
+    const imagePath = "/Users/vlad/DEV/Hackathons/Horses/horse7.jpeg";
+    const name = "lucky7";
     const description = "trainer: 'William Haggas', jockey: 'Andrea Atzeni' "
 
     const result = await storeHorse(imagePath, name, description)
